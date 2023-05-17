@@ -25,7 +25,7 @@ def model_predict(request):
     """
 
     fair = None
-    time = None
+    ride_time = None
 
     job_id = str(uuid.uuid4())
 
@@ -55,7 +55,7 @@ def model_predict(request):
 
             #Here put data of prediction
             fair = output["fair"]
-            time = output["score"]
+            ride_time = output["time"]
 
             db.delete(job_id)
             break
@@ -63,4 +63,4 @@ def model_predict(request):
         # Sleep some time waiting for model results
         time.sleep(settings.API_SLEEP)
 
-    return fair, time
+    return fair, ride_time

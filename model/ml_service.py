@@ -49,12 +49,12 @@ def classify_process():
 
         point_from = json_obj["point_from"]
         point_to = json_obj["point_to"]
-        time = json_obj["time"]
+        datetime = json_obj["time"]
 
-        p = predict({"point_from":point_from,"point_to":point_to,"time":time})
+        p = predict({"point_from":point_from,"point_to":point_to,"time":datetime})
         fair = str(p[0])
-        time = str(p[1])
-        value = {"fair":fair, "time":time}
+        ride_time = str(p[1])
+        value = {"fair":fair, "time":ride_time}
         db.set(json_obj["id"], json.dumps(value))
 
         time.sleep(settings.SERVER_SLEEP)
