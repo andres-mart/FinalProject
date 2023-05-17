@@ -5,26 +5,30 @@ import time
 import numpy as np
 import redis
 import settings
+import model_core
 
 db = redis.Redis(host=settings.REDIS_IP,port=settings.REDIS_PORT,db=0)
 
-def predict():
+def predict(request):
 
     """
-    Load image from the corresponding folder based on the image name
-    received, then, run our ML model to get predictions.
+    Get parameters of the ride and then, run our ML model to get predictions.
 
     Parameters
     ----------
-    image_name : str
-        Image filename.
+    ride_request : dictionary
+        point_from: 
+        point_to:
+        time: 
 
     Returns
     ------- 
     class_name, pred_probability : tuple(str, float)
-        Model predicted class as a string and the corresponding confidence
-        score as a number.
+        Model predicted the fair of ride and other data
     """
+
+    return model_core.predict(request)
+
 
 def classify_process():
     """
@@ -39,13 +43,18 @@ def classify_process():
     """
 
     while True:
-
+        print("classify_process")
         queue, msg = db.brpop(settings.REDIS_QUEUE)
         json_obj = json.loads(msg.decode())
-        p = predict(json_obj["image_name"])
-        prediction = str(p[0])
-        score = str(p[1])
-        value = {"prediction":prediction, "score":score}
+
+        point_from = json_obj["point_from"]
+        point_to = json_obj["point_to"]
+        time = json_obj["time"]
+
+        p = predict({"point_from":point_from,"point_to":point_to,"time":time})
+        fair = str(p[0])
+        time = str(p[1])
+        value = {"fair":fair, "time":time}
         db.set(json_obj["id"], json.dumps(value))
 
         time.sleep(settings.SERVER_SLEEP)

@@ -1,42 +1,46 @@
 import json
 import time
 import uuid
-
 import redis
 import settings
 
-
 db = redis.Redis(host=settings.REDIS_IP,port=settings.REDIS_PORT,db=0)
 
-def model_predict(image_name):
+def model_predict(request):
     """
-    Receives an image name and queues the job into Redis.
+    Receives an object and queues the job into Redis.
     Will loop until getting the answer from our ML service.
 
     Parameters
     ----------
-    image_name : str
-        Name for the image uploaded by the user.
+    ride_request : dict
+        point_from: 
+        point_to:
+        time: 
 
     Returns
     -------
-    prediction, score : tuple(str, float)
-        Model predicted class as a string and the corresponding confidence
-        score as a number.
+    fair, time : tuple(float, time)
+        Model predicted the fair of ride and other data
     """
-    prediction = None
-    score = None
+
+    fair = None
+    time = None
 
     job_id = str(uuid.uuid4())
 
+    print(request)
+
     job_data = {
         "id": job_id,
-        "image_name": image_name
+        "point_from": request["point_from"],
+        "point_to": request["point_to"],
+        "time": request["time"]
     }
 
     db.lpush(
         settings.REDIS_QUEUE,
-        json.dumps(job_data)
+        json.dumps(job_data, default=str)
     )
 
     # Loop until we received the response from our ML model
@@ -48,8 +52,10 @@ def model_predict(image_name):
         # Don't modify the code below, it should work as expected
         if output is not None:
             output = json.loads(output.decode("utf-8"))
-            prediction = output["prediction"]
-            score = output["score"]
+
+            #Here put data of prediction
+            fair = output["fair"]
+            time = output["score"]
 
             db.delete(job_id)
             break
@@ -57,4 +63,4 @@ def model_predict(image_name):
         # Sleep some time waiting for model results
         time.sleep(settings.API_SLEEP)
 
-    return prediction, score
+    return fair, time

@@ -1,7 +1,7 @@
 import os
-
 import settings
-import utils
+from datetime import date
+
 from flask import (
     Blueprint,
     current_app,
@@ -12,6 +12,7 @@ from flask import (
     request,
     url_for,
 )
+
 from middleware import model_predict
 
 router = Blueprint("app_router", __name__, template_folder="templates")
@@ -21,10 +22,26 @@ def index():
     """
     GET: Index endpoint, renders our HTML code.
 
-    POST: Used in our frontend so we can upload and show an image.
-    When it receives an image from the UI, it also calls our ML model to
-    get and display the predictions.
+    POST: Used in our frontend so we can put info about rides.
+    It also calls our ML model to get and display the predictions.
     """
+    if request.method == "GET":
+        return render_template("index.html")
+
+    if request.method == "POST":
+        flash("POST method")
+        flash(request)
+        model_request = {
+            "point_from": 1, 
+            "point_to": 2, 
+            "time":date.today()
+        }
+        fair, time = model_predict(model_request)
+        context = {
+            "fair":fair,
+            "time":time
+        }
+        return render_template("index.html",context=context)
 
 
 @router.route("/predict", methods=["POST"])
@@ -52,5 +69,6 @@ def predict():
         - "prediction" model predicted class as string.
         - "score" model confidence score for the predicted class as float.
     """
-
-
+    request = {"point_from": 1, "point_to": 2, "time":date.today()}
+    fair, time = model_predict(request)
+    return jsonify({"fair":fair,"time":time})
