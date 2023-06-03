@@ -26,10 +26,33 @@
         <form method="post" action="/" enctype="multipart/form-data">
             <dl>
                 <p>
-                    <input type="input" name="point_from" autocomplete="off" required>
+                    <h3>Start point</h3>
+                    <select name="origin" id="origin" required>
+                    {% if zones %}
+                        <ul>
+                        {% for origin in zones %}
+                            <option value={{ origin.id}}>{{ origin.zone}}</option>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    </select>
                 </p>
                 <p>
-                    <input type="input" name="point_to" autocomplete="off" required>
+                    <h3>Destination point<h3>
+                    <select name="destination" id="destination" required>
+                    {% if zones %}
+                        <ul>
+                        {% for dest in zones %}
+                            <option value={{ dest.id}}>{{ dest.zone}}</option>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    </select>
+                </p>
+                <p>
+                    <h3>Choose current time<h3></h3>
+                    <input type="time" id="time" name="time" min="00:00" max="00:00" required>
+                    <small>Evening hours could affect fair</small>
                 </p>
             </dl>
             <p>

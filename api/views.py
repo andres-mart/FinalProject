@@ -14,6 +14,7 @@ from flask import (
 )
 
 from middleware import model_predict
+from utils.readdata import read_json
 
 router = Blueprint("app_router", __name__, template_folder="templates")
 
@@ -26,7 +27,9 @@ def index():
     It also calls our ML model to get and display the predictions.
     """
     if request.method == "GET":
-        return render_template("index.html")
+
+        zones = read_json()
+        return render_template("index.html", zones=zones)
 
     if request.method == "POST":
         flash("POST method")
