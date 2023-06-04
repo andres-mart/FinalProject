@@ -49,9 +49,9 @@ def classify_process():
 
         start_point = json_obj["start_point"]
         dest_point = json_obj["dest_point"]
-        time = json_obj["time"]
+        time_input = json_obj["time"]
 
-        p = model_core.predict({"start_point":start_point,"dest_point":dest_point,"time":time})
+        p = model_core.predict({"start_point":start_point,"dest_point":dest_point,"time":time_input})
         fare = str(p[0])
         ride_time = str(p[1])
         value = {"fare":fare, "time":ride_time}
