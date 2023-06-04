@@ -26,6 +26,17 @@
                 </div>
             </div>
         {% endif %}
+
+        {% if inputs is defined %}
+            <div class="row">
+                <div class="col-25">
+                <label for="subject">Start: {{ inputs['start_point'] }} </label><br>
+                <label for="subject">Dest: {{ inputs['dest_point'] }} </label><br>
+                <label for="subject">Time: {{ inputs['time'] }} </label><br>
+                </div>
+            </div>
+        {% endif %}
+
         <form method="post" action="/" enctype="multipart/form-data" >
             <input type="hidden" id="origin" value="">
             <input type="hidden" id="destination" value="">

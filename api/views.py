@@ -50,6 +50,6 @@ def index():
             "time":time
         }
 
-    return render_template("index.html",context=context)
+    return render_template("index.html",context=context, zones=zones, inputs=model_request)
 
 
