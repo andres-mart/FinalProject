@@ -21,4 +21,4 @@ def predict(request):
 
     #TODO Call model to predict based on input
 
-    return 123,123
+    return request['start_point'],request['time']
