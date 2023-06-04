@@ -1,9 +1,12 @@
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.all.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.10/dist/sweetalert2.min.css">
+
 <!doctype html>
 <html>
     <head>
         <title>New York Cab Fair Predictor</title>
     </head>
-    <body>
+    <body class="bg-light" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0; padding: 0; border-width: 0;" bgcolor="#f7fafc">
         <p>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -23,11 +26,13 @@
                 </div>
             </div>
         {% endif %}
-        <form method="post" action="/" enctype="multipart/form-data">
+        <form method="post" action="/" enctype="multipart/form-data" >
+            <input type="hidden" id="origin" value="">
+            <input type="hidden" id="destination" value="">
             <dl>
                 <p>
                     <h3>Start point</h3>
-                    <select name="origin" id="origin" required>
+                    <select name="start_point" id="start_point" class="form-control" required>
                     {% if zones %}
                         <ul>
                         {% for origin in zones %}
@@ -39,7 +44,7 @@
                 </p>
                 <p>
                     <h3>Destination point<h3>
-                    <select name="destination" id="destination" required>
+                    <select name="dest_point" id="dest_point" class="form-control" required>
                     {% if zones %}
                         <ul>
                         {% for dest in zones %}
@@ -51,13 +56,34 @@
                 </p>
                 <p>
                     <h3>Choose current time<h3></h3>
-                    <input type="time" id="time" name="time" min="00:00" max="00:00" required>
+                    <input type="time" id="time" name="time" min="00:01" max="24:59" class="form-control" required>
                     <small>Evening hours could affect fair</small>
                 </p>
             </dl>
             <p>
-                <input type="submit" value="Get Fair!">
+                <input type="submit" onclick="getValues()" class="btn btn-primary" value="Get Fare!">
             </p>
         </form>
     </body>
 </html>
+<script>
+    function getValues(){
+        var origin = document.getElementById("start_point");
+        var textOrigin = origin.options[origin.selectedIndex].text;
+
+        var dest = document.getElementById("dest_point");
+        var textDest = dest.options[dest.selectedIndex].text;
+
+        if (textOrigin == textDest) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Start point and destination are the same!'
+            })
+            return false;
+        }            
+
+        document.getElementById('origin').value = textOrigin;
+        document.getElementById('destination').value = textDest;
+    }
+</script>

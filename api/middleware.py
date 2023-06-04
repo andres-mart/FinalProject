@@ -14,27 +14,28 @@ def model_predict(request):
     Parameters
     ----------
     ride_request : dict
-        point_from: 
-        point_to:
+        start_point: 
+        dest_point:
         time: 
 
     Returns
     -------
     fair, time : tuple(float, time)
-        Model predicted the fair of ride and other data
+        Model predicted the fare of ride and other data
     """
 
-    fair = None
+    print("REQUEST in middleware")
+    print(request)
+
+    fare = None
     ride_time = None
 
     job_id = str(uuid.uuid4())
 
-    print(request)
-
     job_data = {
         "id": job_id,
-        "point_from": request["point_from"],
-        "point_to": request["point_to"],
+        "start_point": request["start_point"],
+        "dest_point": request["dest_point"],
         "time": request["time"]
     }
 
@@ -54,7 +55,7 @@ def model_predict(request):
             output = json.loads(output.decode("utf-8"))
 
             #Here put data of prediction
-            fair = output["fair"]
+            fare = output["fare"]
             ride_time = output["time"]
 
             db.delete(job_id)
@@ -63,4 +64,4 @@ def model_predict(request):
         # Sleep some time waiting for model results
         time.sleep(settings.API_SLEEP)
 
-    return fair, ride_time
+    return fare, ride_time

@@ -47,14 +47,14 @@ def classify_process():
         queue, msg = db.brpop(settings.REDIS_QUEUE)
         json_obj = json.loads(msg.decode())
 
-        point_from = json_obj["point_from"]
-        point_to = json_obj["point_to"]
-        datetime = json_obj["time"]
+        start_point = json_obj["start_point"]
+        dest_point = json_obj["dest_point"]
+        time = json_obj["time"]
 
-        p = predict({"point_from":point_from,"point_to":point_to,"time":datetime})
-        fair = str(p[0])
+        p = model_core.predict({"start_point":start_point,"dest_point":dest_point,"time":time})
+        fare = str(p[0])
         ride_time = str(p[1])
-        value = {"fair":fair, "time":ride_time}
+        value = {"fare":fare, "time":ride_time}
         db.set(json_obj["id"], json.dumps(value))
 
         time.sleep(settings.SERVER_SLEEP)

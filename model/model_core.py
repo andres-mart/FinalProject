@@ -7,8 +7,8 @@ def predict(request):
     Parameters
     ----------
     ride_request : dictionary
-        point_from: 
-        point_to:
+        start_point: 
+        dest_point:
         time: 
 
     Returns
@@ -16,5 +16,9 @@ def predict(request):
     class_name, pred_probability : tuple(str, float)
         Model predicted the fair of ride and other data
     """
+
+    print(request)
+
+    #TODO Call model to predict based on input
 
     return 123,123

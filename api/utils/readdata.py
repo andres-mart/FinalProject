@@ -16,6 +16,5 @@ def read_json():
     for d in data:
         zones.append({'id': d['LocationID'],'zone':d['Borough'] +'-'+ d['Zone'] })
     f.close()
-    print(zones)
 
     return zones
