@@ -26,52 +26,30 @@ def index():
     POST: Used in our frontend so we can put info about rides.
     It also calls our ML model to get and display the predictions.
     """
-    if request.method == "GET":
+    zones = read_json()
+    zones = sorted(zones, key=lambda d: d['zone'])
 
-        zones = read_json()
+    if request.method == "GET":
         return render_template("index.html", zones=zones)
 
     if request.method == "POST":
-        flash("POST method")
-        flash(request)
+
+        origin = request.form.get("origin")
+        dest = request.form.get("destination")
+        time_input = request.form.get("time")
+
         model_request = {
-            "point_from": 1, 
-            "point_to": 2, 
-            "time":date.today()
+            "start_point": origin, 
+            "dest_point": dest, 
+            "time": time_input
         }
-        fair, time = model_predict(model_request)
+
+        fare, time = model_predict(model_request)
         context = {
-            "fair":fair,
+            "fare":fare,
             "time":time
         }
-        return render_template("index.html",context=context)
+
+    return render_template("index.html",context=context)
 
 
-@router.route("/predict", methods=["POST"])
-def predict():
-    """
-    Endpoint used to get predictions without need to access the UI.
-
-    Parameters
-    ----------
-    file : str
-        Input image we want to get predictions from.
-
-    Returns
-    -------
-    flask.Response
-        JSON response from our API having the following format:
-            {
-                "success": bool,
-                "prediction": str,
-                "score": float,
-            }
-
-        - "success" will be True if the input file is valid and we get a
-          prediction from our ML model.
-        - "prediction" model predicted class as string.
-        - "score" model confidence score for the predicted class as float.
-    """
-    request = {"point_from": 1, "point_to": 2, "time":date.today()}
-    fair, time = model_predict(request)
-    return jsonify({"fair":fair,"time":time})
