@@ -18,10 +18,19 @@ services:
   redis:
     image: redis:6.2.6
 
-  model:
-    image: ml_service
+  model_duration:
+    image: ml_service_duration
     build:
-      context: ./model
+      context: ./model_duration
       target: build
     depends_on:
       - redis
+
+  model_fare:
+    image: ml_service_fare
+    build:
+      context: ./model_fare
+      target: build
+    depends_on:
+      - redis
+      - model_duration
