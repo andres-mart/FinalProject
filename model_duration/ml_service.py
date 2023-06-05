@@ -61,5 +61,5 @@ def classify_process():
 
 
 if __name__ == "__main__":
-    print("Launching ML service...")
+    print("Launching ML Duration service...")
     classify_process()

@@ -13,7 +13,8 @@ services:
       - FLASK_ENV=development
     depends_on:
       - redis
-      - model
+      - model_duration
+      - model_fare
 
   redis:
     image: redis:6.2.6
@@ -33,4 +34,3 @@ services:
       target: build
     depends_on:
       - redis
-      - model_duration
