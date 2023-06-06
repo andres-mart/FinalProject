@@ -52,7 +52,7 @@ def classify_process():
         time_input = json_obj["time"]
 
         predict = model_core.predict({"start_point":start_point,"dest_point":dest_point,"time":time_input})
-        fare = str(predict[0])
+        fare = str(predict)
         value = {"fare":fare}
         db.set(json_obj["id"], json.dumps(value))
 

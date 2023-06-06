@@ -23,10 +23,7 @@ def model_predict(request):
     fair, time : tuple(float, time)
         Model predicted the fare of ride and other data
     """
-
-    print("REQUEST in middleware")
-    print(request)
-
+    
     fare = None
     duration = None
 
@@ -63,26 +60,19 @@ def model_predict(request):
         output_fare = db.get(job_id_fare)
         output_duration = db.get(job_id_duration)
 
-        # Check if the text was correctly processed by our ML model
         if output_fare is not None and output_duration is not None:
+
             output_fare = json.loads(output_fare.decode("utf-8"))
             output_duration = json.loads(output_duration.decode("utf-8"))
 
-            try:
-                #Here put data of prediction
-                fare = output_fare["fare"]
-                duration = output_duration["duration"]
+            fare = output_fare["fare"]
+            duration = output_duration["duration"]
 
-                db.delete(job_id_fare)
-                db.delete(job_id_duration)
-            except:
-                print(output_fare)
-                print(output_duration)
-                print("An exception occurred")
+            db.delete(job_id_fare)
+            db.delete(job_id_duration)
 
             break
 
-        # Sleep some time waiting for model results
         time.sleep(settings.API_SLEEP)
 
     return fare, duration

@@ -53,6 +53,8 @@ def index():
             "destination": dest
         }
 
+        flash(context)
+
     return render_template("index.html",context=context, zones=zones, inputs=model_request)
 
 
