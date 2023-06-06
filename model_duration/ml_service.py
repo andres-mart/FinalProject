@@ -43,7 +43,7 @@ def classify_process():
     """
 
     while True:
-        print("classify_process")
+
         queue, msg = db.brpop(settings.REDIS_QUEUE)
         json_obj = json.loads(msg.decode())
 
@@ -51,15 +51,15 @@ def classify_process():
         dest_point = json_obj["dest_point"]
         time_input = json_obj["time"]
 
-        p = model_core.predict({"start_point":start_point,"dest_point":dest_point,"time":time_input})
-        fare = str(p[0])
-        ride_time = str(p[1])
-        value = {"fare":fare, "time":ride_time}
+        predict = model_core.predict({"start_point":start_point,"dest_point":dest_point,"time":time_input})
+        duration = str(predict[0])
+        value = {"duration":duration}
         db.set(json_obj["id"], json.dumps(value))
 
         time.sleep(settings.SERVER_SLEEP)
 
 
 if __name__ == "__main__":
+
     print("Launching ML Duration service...")
     classify_process()

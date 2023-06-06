@@ -5,7 +5,8 @@ API_DEBUG = True
 
 # REDIS settings
 # Queue name
-REDIS_QUEUE = "service_queue"
+REDIS_QUEUE_FARE = "service_fare"
+REDIS_QUEUE_DURATION = "service_duration"
 # Port
 REDIS_PORT = 6379
 # DB Id

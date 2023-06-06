@@ -17,8 +17,6 @@ def predict(request):
         Model predicted the fair of ride and other data
     """
 
-    print(request)
-
     #TODO Call model to predict based on input
 
-    return request['start_point'],request['time']
+    return request['time']

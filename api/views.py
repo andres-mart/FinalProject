@@ -45,9 +45,12 @@ def index():
         }
 
         fare, time = model_predict(model_request)
+
         context = {
             "fare":fare,
-            "time":time
+            "time":time,
+            "origin": origin,
+            "destination": dest
         }
 
     return render_template("index.html",context=context, zones=zones, inputs=model_request)

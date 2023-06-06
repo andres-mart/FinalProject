@@ -2,7 +2,7 @@ import os
 
 # REDIS
 # Queue name
-REDIS_QUEUE = "service_queue"
+REDIS_QUEUE = "service_fare"
 # Port
 REDIS_PORT = 6379
 # DB Id

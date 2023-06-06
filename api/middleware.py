@@ -28,40 +28,61 @@ def model_predict(request):
     print(request)
 
     fare = None
-    ride_time = None
+    duration = None
 
-    job_id = str(uuid.uuid4())
+    job_id_fare = str(uuid.uuid4())
+    job_id_duration = str(uuid.uuid4())
 
-    job_data = {
-        "id": job_id,
+    job_data_fare = {
+        "id": job_id_fare,
+        "start_point": request["start_point"],
+        "dest_point": request["dest_point"],
+        "time": request["time"]
+    }
+
+    job_data_duration = {
+        "id": job_id_duration,
         "start_point": request["start_point"],
         "dest_point": request["dest_point"],
         "time": request["time"]
     }
 
     db.lpush(
-        settings.REDIS_QUEUE,
-        json.dumps(job_data, default=str)
+        settings.REDIS_QUEUE_FARE,
+        json.dumps(job_data_fare, default=str)
+    )
+
+    db.lpush(
+        settings.REDIS_QUEUE_DURATION,
+        json.dumps(job_data_duration, default=str)
     )
 
     # Loop until we received the response from our ML model
     while True:
 
-        output = db.get(job_id)
+        output_fare = db.get(job_id_fare)
+        output_duration = db.get(job_id_duration)
 
         # Check if the text was correctly processed by our ML model
-        # Don't modify the code below, it should work as expected
-        if output is not None:
-            output = json.loads(output.decode("utf-8"))
+        if output_fare is not None and output_duration is not None:
+            output_fare = json.loads(output_fare.decode("utf-8"))
+            output_duration = json.loads(output_duration.decode("utf-8"))
 
-            #Here put data of prediction
-            fare = output["fare"]
-            ride_time = output["time"]
+            try:
+                #Here put data of prediction
+                fare = output_fare["fare"]
+                duration = output_duration["duration"]
 
-            db.delete(job_id)
+                db.delete(job_id_fare)
+                db.delete(job_id_duration)
+            except:
+                print(output_fare)
+                print(output_duration)
+                print("An exception occurred")
+
             break
 
         # Sleep some time waiting for model results
         time.sleep(settings.API_SLEEP)
 
-    return fare, ride_time
+    return fare, duration
