@@ -3,8 +3,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from xgboost import XGBRegressor
-
-import preprocessing as prep
+from preprocessing import preprocessing
 
 def predict(request):
 
@@ -26,7 +25,7 @@ def predict(request):
     
     fare = 0
 
-    filtered_df = prep.preprocessing()
+    filtered_df = preprocessing()
 
     train_df, test_df = train_test_split(filtered_df, test_size=0.2, random_state=42, shuffle=True)
 
