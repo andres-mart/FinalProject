@@ -14,6 +14,5 @@ REDIS_IP = os.getenv("REDIS_IP", "redis")
 # interval between requests to our redis queue
 SERVER_SLEEP = 0.05
 
-
 DATASET_ROOT_PATH = str(Path(__file__).parent.parent / "dataset")
 os.makedirs(DATASET_ROOT_PATH, exist_ok=True)

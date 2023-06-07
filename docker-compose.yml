@@ -34,4 +34,3 @@ services:
       target: build
     depends_on:
       - redis
-      - model_duration

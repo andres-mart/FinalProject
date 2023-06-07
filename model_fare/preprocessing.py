@@ -7,11 +7,12 @@ from sklearn.preprocessing import LabelEncoder
 sys.path.append(os.path.dirname(os.getcwd()))
 
 def preprocessing():
-    df = pd.read_parquet("yellow_tripdata_2022-05.parquet", engine='pyarrow') ##change the path for your own local
+
+    df = pd.read_parquet("dataset/yellow_tripdata_2022-05.parquet") ##change the path for your own local
     #df.sample(10, random_state=42) #seed of randomness for reproducibility
 
-    df2 = pd.read_csv("taxi+_zone_lookup.csv") 
-    df3 = pd.read_csv("taxi_zone_lookup_coordinates.csv")
+    df2 = pd.read_csv("dataset/taxi+_zone_lookup.csv") 
+    df3 = pd.read_csv("dataset/taxi_zone_lookup_coordinates.csv")
 
     #Auxiliary datasets creation
     df_pickup = pd.merge(df, df2, left_on= "PULocationID", right_on= "LocationID")

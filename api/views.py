@@ -44,11 +44,11 @@ def index():
             "time": time_input
         }
 
-        fare, time = model_predict(model_request)
+        fare, duration = model_predict(model_request)
 
         context = {
-            "fare":fare,
-            "time":time,
+            "fate":fare,
+            "duration":duration,
             "origin": origin,
             "destination": dest
         }

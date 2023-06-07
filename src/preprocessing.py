@@ -1,6 +1,7 @@
 import pandas as pd
 import os
 import sys
+import pickle
 
 from sklearn.preprocessing import LabelEncoder
 
