@@ -4,7 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from xgboost import XGBRegressor
 
-from src import preprocessing as prep
+import preprocessing as prep
 
 def predict(request):
 
