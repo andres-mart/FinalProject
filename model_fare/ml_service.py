@@ -27,7 +27,7 @@ def predict(request):
     return model_core.predict(request)
 
 
-def classify_process():
+def get_fare():
     """
     Loop indefinitely asking Redis for new jobs.
     When a new job arrives, takes it from the Redis queue, uses the loaded ML
@@ -43,12 +43,11 @@ def classify_process():
         
         queue, msg = db.brpop(settings.REDIS_QUEUE)
         json_obj = json.loads(msg.decode())
-
-        start_point = json_obj["start_point"]
-        dest_point = json_obj["dest_point"]
+        
+        duration = json_obj["duration"]
         time_input = json_obj["time"]
 
-        predict = model_core.predict({"start_point":start_point,"dest_point":dest_point,"time":time_input})
+        predict = model_core.predict({"duration":duration,"time":time_input})
         fare = str(predict)
         value = {"fare":fare}
         db.set(json_obj["id"], json.dumps(value))
@@ -59,4 +58,4 @@ def classify_process():
 if __name__ == "__main__":
 
     print("Launching ML Fare service...")
-    classify_process()
+    get_fare()

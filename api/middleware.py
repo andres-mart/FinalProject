@@ -26,8 +26,7 @@ def model_predict(request):
     
     fare = None
     duration = None
-
-    job_id_fare = str(uuid.uuid4())
+    
     job_id_duration = str(uuid.uuid4())
 
     job_data_duration = {
@@ -63,6 +62,8 @@ def model_predict(request):
             break
     
     if duration is not None:
+
+        job_id_fare = str(uuid.uuid4())
         
         job_data_fare = {
             "id": job_id_fare,

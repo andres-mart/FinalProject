@@ -27,7 +27,7 @@ def predict(request):
     return model_core.predict(request)
 
 
-def classify_process():
+def get_duration():
     """
     Loop indefinitely asking Redis for new jobs.
     When a new job arrives, takes it from the Redis queue, uses the loaded ML
@@ -59,4 +59,4 @@ def classify_process():
 if __name__ == "__main__":
 
     print("Launching ML Duration service...")
-    classify_process()
+    get_duration()
