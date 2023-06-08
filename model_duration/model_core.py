@@ -35,8 +35,8 @@ def predict(request):
 
         train_df, test_df = train_test_split(filtered_df, test_size=0.2, random_state=42, shuffle=True)
 
-        X_train = train_df.drop("duration", axis=1)
-        X_test = test_df.drop("duration", axis=1)
+        X_train = train_df[["trip_distance", "speed_minutes", "fare_amount"]]
+        X_test = test_df[["trip_distance", "speed_minutes", "fare_amount"]]
         y_train = train_df["duration"]
         y_test = test_df["duration"]
 

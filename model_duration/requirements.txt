@@ -8,3 +8,4 @@ xgboost==1.6.1
 scikit-learn==1.2.2
 pyarrow==9.0.0
 fastparquet==0.8.3
+geopy
