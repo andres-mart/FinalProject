@@ -4,6 +4,11 @@ import redis
 import settings
 import model_core
 
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
+from preprocessing import preprocessing
+import geopy.distance
+
 db = redis.Redis(host=settings.REDIS_IP,port=settings.REDIS_PORT,db=0)
 
 def predict(request):
@@ -47,9 +52,33 @@ def classify_process():
         start_point = json_obj["start_point"]
         dest_point = json_obj["dest_point"]
         time_input = json_obj["time"]
+        
+        #Processing
+        data = preprocessing()
+        
+        train_df, test_df = train_test_split(filtered_df, test_size=0.2, random_state=42, shuffle=True)
 
-        predict = model_core.predict({"start_point":start_point,"dest_point":dest_point,"time":time_input})
-        fare = str(predict)
+        X_train = train_df[["duration", "speed_minutes"]]
+    
+        scaler = MinMaxScaler()
+        scaler.fit(X_train)
+
+        lat1 = data[data["PUZone"] == start_point].PULat.mean()
+        lon1 = data[data["PUZone"] == start_point].PULong.mean()
+        lat2 = data[data["DOZone"] == dest_point].DOLat.mean()
+        lon2 = data[data["DOZone"] == dest_point].DOLong.mean()
+        #Estimate trip distance using lat and long
+        coords_1 = (lat1, lon1)
+        coords_2 = (lat2, lon2)
+        trip_distance = geopy.distance.geodesic(coords_1, coords_2).km
+        #Estimate median speed at that given time
+        speed_minutes = data[data["hour_pickup"] == time_input]["speed_minutes"].median()
+        #Scaling inputs
+        trip_distance_scaled = scaler.transform(trip_distance)
+        speed_minutes_scaled = scaler.transform(speed_minutes)
+        #Prediction
+        predict = model_core.predict({"trip_distance":trip_distance_scaled,"speed_minutes":speed_minutes_scaled})
+        fare = str(round(predict,2))
         value = {"fare":fare}
         db.set(json_obj["id"], json.dumps(value))
 
