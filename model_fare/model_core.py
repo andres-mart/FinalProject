@@ -33,10 +33,10 @@ def predict(request):
 
         train_df, test_df = train_test_split(filtered_df, test_size=0.2, random_state=42, shuffle=True)
 
-        X_train = train_df.drop("duration", axis=1)
-        X_test = test_df.drop("duration", axis=1)
-        y_train = train_df["duration"]
-        y_test = test_df["duration"]
+        X_train = train_df[["trip_distance", "speed_minutes"]]
+        X_test = test_df[["trip_distance", "speed_minutes"]]
+        y_train = train_df["fare_amount"]
+        y_test = test_df["fare_amount"]
 
         columns = X_train.columns
         scaler = MinMaxScaler()
@@ -47,6 +47,7 @@ def predict(request):
         xgreg.fit(X_train, y_train)
 
         pickle.dump(xgreg, open(filename, 'wb'))
+        pickle.dump(scaler, open(filename, 'wb'))
 
     predict = xgreg.predict([1])
 
