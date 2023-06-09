@@ -11,27 +11,6 @@ import geopy.distance
 
 db = redis.Redis(host=settings.REDIS_IP,port=settings.REDIS_PORT,db=0)
 
-def predict(request):
-
-    """
-    Get parameters of the ride and then, run our ML model to get predictions.
-
-    Parameters
-    ----------
-    ride_request : dictionary
-        point_from: 
-        point_to:
-        time: 
-
-    Returns
-    ------- 
-    class_name, pred_probability : tuple(str, float)
-        Model predicted the fair of ride and other data
-    """
-
-    return model_core.predict(request)
-
-
 def get_duration():
     """
     Loop indefinitely asking Redis for new jobs.
@@ -43,7 +22,7 @@ def get_duration():
     Load image from the corresponding folder based on the image name
     received, then, run our ML model to get predictions.
     """
-
+    data = preprocessing()
     while True:
 
         queue, msg = db.brpop(settings.REDIS_QUEUE)
@@ -52,8 +31,8 @@ def get_duration():
         start_point = json_obj["start_point"]
         dest_point = json_obj["dest_point"]
         time_input = json_obj["time"]
-        #Processing
-        data = preprocessing()
+
+        #Processing        
         train_df, test_df = train_test_split(data, test_size=0.2, random_state=42, shuffle=True)
 
         X_train = train_df[["trip_distance", "speed_minutes", "fare_amount"]]
