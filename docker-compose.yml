@@ -22,7 +22,8 @@ services:
   model_duration:
     image: ml_service_duration
     build:
-      context: ./model_duration
+      context: /
+      dockerfile: ./model_duration/Dockerfile
       target: build
     depends_on:
       - redis
@@ -30,7 +31,8 @@ services:
   model_fare:
     image: ml_service_fare
     build:
-      context: ./model_fare
+      context: /
+      dockerfile: ./model_fare/Dockerfile
       target: build
     depends_on:
       - redis
