@@ -28,11 +28,8 @@ The technologies involved are:
 - Redis for the communication between microservices
 - Sk-learn and XGboost for the model preprocessing and prediction processes. 
 
-
-
-
 ###  Modules
-
+```
 ├── api
 │   ├── templates
 │   |   └── index.html
@@ -68,3 +65,4 @@ The technologies involved are:
 ├── docker-compose.yml
 ├── EDA.ipynb
 └── README.md
+```
