@@ -6,7 +6,7 @@ import model_core
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from preprocessing import preprocessing
+from src.preprocessing import preprocessing
 import geopy.distance
 
 db = redis.Redis(host=settings.REDIS_IP,port=settings.REDIS_PORT,db=0)
@@ -22,7 +22,10 @@ def get_fare():
     Load image from the corresponding folder based on the image name
     received, then, run our ML model to get predictions.
     """
+
+    #Processing    
     data = preprocessing()
+
     while True:
         
         queue, msg = db.brpop(settings.REDIS_QUEUE)
@@ -31,9 +34,8 @@ def get_fare():
         start_point = json_obj["start_point"]
         dest_point = json_obj["dest_point"]
         duration = json_obj["duration"]
-        time_input = json_obj["time"]
-        
-        #Processing        
+        time_input = json_obj["time"]        
+            
         train_df, test_df = train_test_split(data, test_size=0.2, random_state=42, shuffle=True)
 
         X_train = train_df[["duration", "speed_minutes"]]
