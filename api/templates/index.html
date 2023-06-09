@@ -4,9 +4,9 @@
 <!doctype html>
 <html>
     <head>
-        <title>New York Cab Fair Predictor</title>
+        <title>New York Cab Predictor</title>
     </head>
-    <body class="bg-light" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0; padding: 0; border-width: 0;" bgcolor="#f7fafc">
+    <body class="bg-light" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0.5em 2em; padding: 0; border-width: 0;" bgcolor="#f7fafc">
         <p>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -17,6 +17,13 @@
                 </ul>
             {% endif %}
             {% endwith %}
+        </p>
+        
+        </p><center>
+             <h1>Anyone IApp</h1></center>
+        </p>
+        <p>
+            <center> <h3>Travel faster. Travel safer. Travel smarter</h3></center>
         </p>
         {% if context is defined %}
             <div class="row">
@@ -31,7 +38,7 @@
             <input type="hidden" id="origin" name="origin"  value="">
             <input type="hidden" id="destination" name="destination" value="">
             <dl>
-                <p>
+                <p><center>
                     <h3>Start point</h3>
                     <select name="start_point" id="start_point" class="form-control" required>
                     {% if zones %}
@@ -41,7 +48,7 @@
                         {% endfor %}
                         </ul>
                     {% endif %}
-                    </select>
+                    </select></center>
                 </p>
                 <p>
                     <h3>Destination point<h3>
@@ -55,14 +62,14 @@
                     {% endif %}
                     </select>
                 </p>
-                <p>
+                <p><center>
                     <h3>Choose current time<h3></h3>
-                    <input type="time" id="time" name="time" min="00:01" max="24:59" class="form-control" required>
-                    <small>Evening hours could affect fair</small>
+                    <input type="time" id="time" name="time" min="0" max="23" class="form-control" required>
+                    <small>Evening hours could affect fair</small></center>
                 </p>
             </dl>
-            <p>
-                <input type="submit" name="post_data" onclick="getValues()" class="btn btn-primary" value="Get Fare!">
+            <p><center>
+                <input type="submit" name="post_data" onclick="getValues()" class="btn btn-primary" value="Get Fare!"></center>
             </p>
         </form>
     </body>
