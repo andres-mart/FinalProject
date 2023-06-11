@@ -23,9 +23,7 @@
              <h1>Anyone IApp</h1>
         </p>
         <p>
-
-                <h3>Travel faster. Travel safer. Travel smarter</h3>
-
+            <h3>Travel faster. Travel safer. Travel smarter</h3>
         </p>
         {% if context is defined %}
             <div class="row">
@@ -36,7 +34,7 @@
             </div>
         {% endif %}
 
-        <form method="post" action="/" enctype="multipart/form-data" >
+        <form name="form-predict" id="form-predict" method="post" action="/" enctype="multipart/form-data" >
             <input type="hidden" id="origin" name="origin"  value="">
             <input type="hidden" id="destination" name="destination" value="">
             <dl>

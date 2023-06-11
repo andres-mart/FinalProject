@@ -1,16 +1,11 @@
-import os
-import settings
 from datetime import date
 
 from flask import (
     Blueprint,
     current_app,
     flash,
-    jsonify,
-    redirect,
     render_template,
-    request,
-    url_for,
+    request
 )
 
 from middleware import model_predict
@@ -49,14 +44,14 @@ def index():
         fare, duration = model_predict(model_request)
 
         context = {
-            "fate":fare,
+            "fare":fare,
             "duration":duration,
             "origin": origin,
             "destination": dest
         }
 
-        flash(context)
+        #flash(context)
 
-    return render_template("index.html",context=context, zones=zones, inputs=model_request)
+    return render_template("index.html",context=context, pickup_zones=pickup_zones,dropoff_zones=dropoff_zones, inputs=model_request)
 
 
