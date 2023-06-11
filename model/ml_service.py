@@ -4,6 +4,7 @@ import redis
 import settings
 import pandas as pd
 import geopy.distance
+import numpy as np
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
@@ -30,15 +31,17 @@ def get_prediction():
     fare = None
 
     data = preprocessing()
+    print(data.columns)
 
     while True:
 
         queue, msg = db.brpop(settings.REDIS_QUEUE)
         json_obj = json.loads(msg.decode())
 
-        start_point = json_obj["start_point"]
-        dest_point = json_obj["dest_point"]
+        start_point = int(json_obj["start_point"])
+        dest_point = int(json_obj["dest_point"])
         time_input = json_obj["time"]
+        hour_input = int(time_input.split(":")[0])
      
         train_df, test_df = train_test_split(data, test_size=0.2, random_state=42, shuffle=True)
 
@@ -53,40 +56,34 @@ def get_prediction():
         X_train = pd.DataFrame(scaler.transform(X_train))
         X_test = pd.DataFrame(scaler.transform(X_test))
 
-        #lat1 = data[data["PUZone"].isin([start_point])]
-        #lon1 = data[data["PUZone"].isin([start_point])]
-        #lat2 = data[data["DOZone"].isin([dest_point])]
-        #lon2 = data[data["DOZone"].isin([dest_point])]
-
-        print("Start point") 
-        print(start_point) 
-        
-        print("PULocationID type")
-        print(type(data["PULocationID"]))
-        print("start_point type")
-        print(type(start_point))
-
-        lat1 = data[data["PULocationID"] == start_point].PULat.mean()
-        lon1 = data[data["PULocationID"] == start_point].PULong.mean()
-        lat2 = data[data["DOLocationID"] == dest_point].DOLat.mean()
-        lon2 = data[data["DOLocationID"] == dest_point].DOLong.mean()
-
-        print(lat1)
-        print(lon1)
-        print(lat2)
-        print(lon2)        
+        lat1 = data[data["PULocationID"].isin([start_point])].PULat.mean()
+        lon1 = data[data["PULocationID"].isin([start_point])].PULong.mean()
+        lat2 = data[data["DOLocationID"].isin([dest_point])].DOLat.mean()
+        lon2 = data[data["DOLocationID"].isin([dest_point])].DOLong.mean()
 
         #Estimate trip distance using lat and long
         coords_1 = (lat1, lon1)
         coords_2 = (lat2, lon2)
         trip_distance = geopy.distance.geodesic(coords_1, coords_2).km
 
+        print("trip_distance")
+        print(trip_distance)
+
         #Estimate median speed at that given time
-        speed_minutes = data[data["hour_pickup"] == time_input]["speed_minutes"].median()
+        speed_minutes = data[data["hour_pickup"] == hour_input]["speed_minutes"].median()
+
+        print("speed_minutes")
+        print(speed_minutes)
 
         #Scaling inputs
-        trip_distance_scaled = scaler.transform(trip_distance)
-        speed_minutes_scaled = scaler.transform(speed_minutes)
+        trip_distance_scaled = scaler.transform(np.array([trip_distance]).reshape(-1,1))
+        speed_minutes_scaled = scaler.transform(np.array([speed_minutes]).reshape(-1,1))
+
+        print("trip_distance_scaled")
+        print(trip_distance_scaled)
+
+        print("speed_minutes_scaled")
+        print(speed_minutes_scaled)
 
         xgreg = XGBRegressor()
         xgreg.fit(X_train, y_train)
@@ -95,10 +92,10 @@ def get_prediction():
         
         duration = str(predict)
 
-        #Get fare
+        print("duration")
+        print(duration)
 
-
-
+        #TODO:Get fare
 
         value = {"duration":duration,"fare": fare}
         db.set(json_obj["id"], json.dumps(value))

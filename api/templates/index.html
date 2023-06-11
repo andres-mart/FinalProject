@@ -6,7 +6,7 @@
     <head>
         <title>New York Cab Predictor</title>
     </head>
-    <body class="bg-light" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0.5em 2em; padding: 0; border-width: 0; align-self: center;" bgcolor="#f7fafc">
+    <body class="bg-light" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0.5em 2em; padding: 0; border-width: 0; align-self: self-start;" bgcolor="#f7fafc">
         <p>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -43,9 +43,9 @@
                 <p>
                     <h3>Start point</h3>
                     <select name="start_point" id="start_point" class="form-control" required>
-                    {% if zones %}
+                    {% if pickup_zones %}
                         <ul>
-                        {% for origin in zones %}
+                        {% for origin in pickup_zones %}
                             <option value={{ origin.id}}>{{ origin.zone}}</option>
                         {% endfor %}
                         </ul>
@@ -55,9 +55,9 @@
                 <p>
                     <h3>Destination point<h3>
                     <select name="dest_point" id="dest_point" class="form-control" required>
-                    {% if zones %}
+                    {% if dropoff_zones %}
                         <ul>
-                        {% for dest in zones %}
+                        {% for dest in dropoff_zones %}
                             <option value={{ dest.id}}>{{ dest.zone}}</option>
                         {% endfor %}
                         </ul>
@@ -65,11 +65,9 @@
                     </select>
                 </p>
                 <p>
-
-                        <h3>Choose current time<h3></h3>
-                        <input type="time" id="time" name="time" min="0" max="23" class="form-control" required>
-                        <small>*Rush hours could affect fare amount</small>
-
+                    <h3>Choose current time<h3></h3>
+                    <input type="time" id="time" name="time" min="0" max="23" class="form-control" required>
+                    <small>*Rush hours could affect fare amount</small>
                 </p>
             </dl>
             <p>
