@@ -63,3 +63,50 @@ The technologies involved are:
 ├── EDA.ipynb # Exploratory data analysis notebook.
 └── README.md
 ```
+## Usage and installation instructions
+
+To run the services using compose:
+
+```bash
+$ cp .env.original .env
+```
+
+```bash
+$ docker-compose up --build -d
+```
+
+To stop the services:
+
+```bash
+$ docker-compose down
+```
+
+## Code Style
+
+Following a style guide keeps the code's aesthetics clean and improves readability, making contributions and code reviews easier. Automated Python code formatters make sure your codebase stays in a consistent style without any manual work on your end. If adhering to a specific style of coding is important to you, employing an automated to do that job is the obvious thing to do. This avoids bike-shedding on nitpicks during code reviews, saving you an enormous amount of time overall.
+
+We use [Black](https://black.readthedocs.io/) and [isort](https://pycqa.github.io/isort/) for automated code formatting in this project, you can run it with:
+
+```console
+$ isort --profile=black . && black --line-length 88 .
+```
+
+Wanna read more about Python code style and good practices? Please see:
+- [The Hitchhiker’s Guide to Python: Code Style](https://docs.python-guide.org/writing/style/)
+- [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html)
+
+## Tests
+
+We provide unit tests along with the project that you can run and check from your side the code meets the minimum requirements of correctness needed to approve. To run just execute:
+
+### 1. Modules
+
+We make use of [multi-stage docker builds](https://docs.docker.com/develop/develop-images/multistage-build/) so we can have into the same Dockerfile environments for testing and also for deploying our service.
+
+#### 1.1. Api
+
+Run:
+
+```bash
+$ cd api/
+$ docker build -t flask_test_detect.py --progress=plain --target test .
