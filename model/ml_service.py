@@ -58,15 +58,23 @@ def get_prediction():
         #lat2 = data[data["DOZone"].isin([dest_point])]
         #lon2 = data[data["DOZone"].isin([dest_point])]
 
-        lat1 = data[data["PUZone"] == start_point].PULat.mean()
-        lon1 = data[data["PUZone"] == start_point].PULong.mean()
-        lat2 = data[data["DOZone"] == dest_point].DOLat.mean()
-        lon2 = data[data["DOZone"] == dest_point].DOLong.mean()
+        print("Start point") 
+        print(start_point) 
+        
+        print("PULocationID type")
+        print(type(data["PULocationID"]))
+        print("start_point type")
+        print(type(start_point))
+
+        lat1 = data[data["PULocationID"] == start_point].PULat.mean()
+        lon1 = data[data["PULocationID"] == start_point].PULong.mean()
+        lat2 = data[data["DOLocationID"] == dest_point].DOLat.mean()
+        lon2 = data[data["DOLocationID"] == dest_point].DOLong.mean()
 
         print(lat1)
-        print(lat2)
         print(lon1)
-        print(lon2)
+        print(lat2)
+        print(lon2)        
 
         #Estimate trip distance using lat and long
         coords_1 = (lat1, lon1)
