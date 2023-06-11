@@ -103,10 +103,10 @@ We provide unit tests along with the project that you can run and check from you
 
 We make use of [multi-stage docker builds](https://docs.docker.com/develop/develop-images/multistage-build/) so we can have into the same Dockerfile environments for testing and also for deploying our service.
 
-#### 1.1. Api
+#### 1.1. Test functions
 
 Run:
 
 ```bash
-$ cd api/
+$ cd FinalProject/
 $ docker build -t flask_test_detect.py --progress=plain --target test .
