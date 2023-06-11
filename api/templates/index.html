@@ -38,7 +38,7 @@
             <input type="hidden" id="origin" name="origin"  value="">
             <input type="hidden" id="destination" name="destination" value="">
             <dl>
-                <p><center>
+                <p>
                     <h3>Start point</h3>
                     <select name="start_point" id="start_point" class="form-control" required>
                     {% if zones %}
@@ -48,7 +48,7 @@
                         {% endfor %}
                         </ul>
                     {% endif %}
-                    </select></center>
+                    </select>
                 </p>
                 <p>
                     <h3>Destination point<h3>
@@ -65,7 +65,7 @@
                 <p><center>
                     <h3>Choose current time<h3></h3>
                     <input type="time" id="time" name="time" min="0" max="23" class="form-control" required>
-                    <small>Evening hours could affect fair</small></center>
+                    <small>*Rush hours could affect fair amount</small></center>
                 </p>
             </dl>
             <p><center>
