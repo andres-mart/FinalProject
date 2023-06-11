@@ -60,6 +60,6 @@ The technologies involved are:
 │   └── test_detect.py # Checks the shape of the dataframe
 |
 ├── docker-compose.yml # docker settings and dependencies for the whole infra
-├── EDA.ipynb #Exploratory data analysis notebook.
+├── EDA.ipynb # Exploratory data analysis notebook.
 └── README.md
 ```
