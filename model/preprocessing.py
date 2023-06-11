@@ -1,7 +1,6 @@
 import pandas as pd
 import os
 import sys
-import pickle
 
 from sklearn.preprocessing import LabelEncoder
 
@@ -92,8 +91,3 @@ def preprocessing():
     filtered_df["DOZone"] = encoder.fit_transform(filtered_df[["DOZone"]])
 
     return filtered_df
-
-if __name__ == "__main__":
-
-    print("Preprocessing service...")
-    preprocessing()

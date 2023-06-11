@@ -3,7 +3,7 @@ from pathlib import Path
 
 # REDIS
 # Queue name
-REDIS_QUEUE = "service_duration"
+REDIS_QUEUE = "service"
 # Port
 REDIS_PORT = 6379
 # DB Id

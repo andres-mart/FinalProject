@@ -1,13 +1,12 @@
 FROM python:3.8.13 as base
 
-ADD model_duration/requirements.txt .
+ADD model/requirements.txt .
 RUN pip install --upgrade pip && pip install -r requirements.txt
 
 ENV PYTHONPATH=$PYTHONPATH:/src/
 
-ADD ./model_duration /src/
+ADD ./model /src/
 ADD ./dataset /src/
-ADD ./src/preprocessing.py /src/
 
 WORKDIR /src
 

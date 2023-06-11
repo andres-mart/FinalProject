@@ -27,65 +27,34 @@ def model_predict(request):
     fare = None
     duration = None
     
-    job_id_duration = str(uuid.uuid4())
+    job_id = str(uuid.uuid4())
 
-    job_data_duration = {
-        "id": job_id_duration,
+    job_data = {
+        "id": job_id,
         "start_point": request["start_point"],
         "dest_point": request["dest_point"],
         "time": request["time"]
     }
 
     db.lpush(
-        settings.REDIS_QUEUE_DURATION,
-        json.dumps(job_data_duration, default=str)
+        settings.REDIS_QUEUE,
+        json.dumps(job_data, default=str)
     )
 
     # Loop until we received the response from our ML model
     while True:
 
-        #output_fare = db.get(job_id_fare)
-        output_duration = db.get(job_id_duration)
+        output = db.get(job_id)
 
-        #if output_fare is not None and output_duration is not None:
-        if output_duration is not None:
+        if output is not None:
 
-            #output_fare = json.loads(output_fare.decode("utf-8"))
-            output_duration = json.loads(output_duration.decode("utf-8"))
+            output = json.loads(output.decode("utf-8"))
 
-            #fare = output_fare["fare"]
-            duration = output_duration["duration"]
+            fare = output["fare"]
+            duration = output["duration"]
 
-            #db.delete(job_id_fare)
-            db.delete(job_id_duration)
+            db.delete(job_id)
 
             break
-    
-    if duration is not None:
-
-        job_id_fare = str(uuid.uuid4())
-        
-        job_data_fare = {
-            "id": job_id_fare,
-            "duration" : duration,
-            "time": request["time"]
-        }
-
-        db.lpush(
-            settings.REDIS_QUEUE_FARE,
-            json.dumps(job_data_fare, default=str)
-        )
-
-        while True:
-
-            output_fare = db.get(job_id_fare)
-
-            if output_fare is not None:
-
-                output_fare = json.loads(output_fare.decode("utf-8"))
-                fare = output_fare["fare"]
-                db.delete(job_id_fare)
-
-                break
 
     return fare, duration
