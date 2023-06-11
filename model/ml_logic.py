@@ -1,5 +1,6 @@
 import pandas as pd
 import geopy.distance
+import numpy as np
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
@@ -36,19 +37,22 @@ def predict(data,start_point,dest_point,hour_input):
     X_train = train_df[["trip_distance", "speed_minutes"]]
     y_train = train_df["fare_amount"]
 
-    #scaler = MinMaxScaler()
-    #scaler = scaler.fit(X_train)
+    scaler = MinMaxScaler()
+    scaler = scaler.fit(X_train)
 
-    inputs_fare = {"trip_distance" : trip_distance, "speed_minutes": speed_minutes}
+    #inputs_fare = {"trip_distance" : trip_distance, "speed_minutes": speed_minutes}
+
+    input_data = pd.DataFrame([[trip_distance, speed_minutes]],columns=["trip_distance", "speed_minutes"])
+
     #inputs_to_predict_fare = pd.DataFrame([inputs_fare])
-    #inputs_fare_scaled = scaler.transform(inputs_to_predict_fare)
+    inputs_fare_scaled = scaler.transform(input_data)
 
     #Scale values
     xgreg = XGBRegressor()
     xgreg.fit(X_train, y_train)
 
     #predict_fare = xgreg.predict(inputs_fare_scaled)
-    predict_fare = xgreg.predict(inputs_fare)
+    predict_fare = xgreg.predict(inputs_fare_scaled)
     
     fare = str(predict_fare)
 
@@ -61,14 +65,17 @@ def predict(data,start_point,dest_point,hour_input):
     #scaler = MinMaxScaler()
     #scaler = scaler.fit(X_train)
 
-    inputs_duration = {"trip_distance" : trip_distance, "speed_minutes": speed_minutes, "fare_amount":predict_fare}
+    #inputs_duration = {"trip_distance" : trip_distance, "speed_minutes": speed_minutes, "fare_amount":predict_fare}
     #inputs_to_predict_duration = pd.DataFrame([inputs_duration])
     #inputs_duration_scaled = scaler.transform(inputs_to_predict_duration)
+    input_data_duration = pd.DataFrame(np.hstack((np.array([trip_distance]).reshape(-1, 1), np.array([speed_minutes]).reshape(-1, 1), np.array([predict_fare]).reshape(-1, 1))),
+        columns=["trip_distance", "speed_minutes", "fare_amount"],
+    )
 
     xgreg.fit(X_train, y_train)
 
     #predict_duration = xgreg.predict(inputs_duration_scaled)
-    predict_duration = xgreg.predict(inputs_duration)
+    predict_duration = xgreg.predict(input_data_duration)
     
     duration = str(predict_duration)
 
