@@ -6,7 +6,7 @@
     <head>
         <title>New York Cab Predictor</title>
     </head>
-    <body class="bg-light" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0.5em 2em; padding: 0; border-width: 0;" bgcolor="#f7fafc">
+    <body class="bg-light" style="outline: 0; width: 100%; min-width: 100%; height: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; font-family: Helvetica, Arial, sans-serif; line-height: 24px; font-weight: normal; font-size: 16px; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; color: #000000; margin: 0.5em 2em; padding: 0; border-width: 0; align-self: center;" bgcolor="#f7fafc">
         <p>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -19,11 +19,13 @@
             {% endwith %}
         </p>
         
-        </p><center>
-             <h1>Anyone IApp</h1></center>
+        </p>
+             <h1>Anyone IApp</h1>
         </p>
         <p>
-            <center> <h3>Travel faster. Travel safer. Travel smarter</h3></center>
+
+                <h3>Travel faster. Travel safer. Travel smarter</h3>
+
         </p>
         {% if context is defined %}
             <div class="row">
@@ -62,14 +64,17 @@
                     {% endif %}
                     </select>
                 </p>
-                <p><center>
-                    <h3>Choose current time<h3></h3>
-                    <input type="time" id="time" name="time" min="0" max="23" class="form-control" required>
-                    <small>*Rush hours could affect fair amount</small></center>
+                <p>
+
+                        <h3>Choose current time<h3></h3>
+                        <input type="time" id="time" name="time" min="0" max="23" class="form-control" required>
+                        <small>*Rush hours could affect fare amount</small>
+
                 </p>
             </dl>
-            <p><center>
-                <input type="submit" name="post_data" onclick="getValues()" class="btn btn-primary" value="Get Fare!"></center>
+            <p>
+
+                    <input type="submit" name="post_data" onclick="getValues()" class="btn btn-primary" value="Get Fare!">
             </p>
         </form>
     </body>
@@ -81,8 +86,5 @@
 
         document.getElementById('origin').value = origin;
         document.getElementById('destination').value = dest;
-
-        console.log(origin);
-        console.log(dest);
     }
 </script>
