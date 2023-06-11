@@ -63,6 +63,27 @@ The technologies involved are:
 ├── EDA.ipynb # Exploratory data analysis notebook.
 └── README.md
 ```
+Let's take a quick overview of each module:
+
+- api: It has all the needed code to implement the communication interface between the users and our service. It uses Flask and Redis to queue tasks to be processed by our machine learning model.
+    - `api/a`: Setup and launch our Flask api.
+    - `api/views.py`: Contains the API endpoints. You must implement the following endpoints:
+        - *upload_image*: Displays a frontend in which the user can upload an image and get a prediction from our model.
+        - *predict*: POST method which receives an image and sends back the model prediction. This endpoint is useful for integration with other services and platforms given we can access it from any               other programming language.
+        - *feedback*: Endpoint used to get feedback from users when the prediction from our model is incorrect.
+    - `api/utils.py`: Implements some extra functions used internally by our api.
+    - `api/settings.py`: It has all the API settings.
+    - `api/templates`: Here we put the .html files used in the frontend.
+    - `api/tests`: Test suite.
+- model: Implements the logic to get jobs from Redis and process them with our Machine Learning model. When we get the predicted value from our model, we must encode it on Redis again so it can be delivered to the user.
+    - `model/ml_service.py`: Runs a thread in which it gets jobs from Redis, processes them with the model, and returns the answers.
+    - `model/settings.py`: Settings for our ML model.
+    - `model/tests`: Test suite.
+- tests: This module contains integration tests so we can properly check our system's behavior is expected and functions as intended.
+
+For a schematic idea of how our system works, please refer to the file `System_architecture_diagram.png` to have a graphical description of the microservices and how the communication is performed.
+
+
 ## Usage and installation instructions
 
 To run the services using compose:
