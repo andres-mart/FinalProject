@@ -1,20 +1,15 @@
-import os
-import settings
 from datetime import date
 
 from flask import (
     Blueprint,
     current_app,
     flash,
-    jsonify,
-    redirect,
     render_template,
-    request,
-    url_for,
+    request
 )
 
 from middleware import model_predict
-from utils.readdata import read_json
+import utils.readdata as read
 
 router = Blueprint("app_router", __name__, template_folder="templates")
 
@@ -26,11 +21,13 @@ def index():
     POST: Used in our frontend so we can put info about rides.
     It also calls our ML model to get and display the predictions.
     """
-    zones = read_json()
-    zones = sorted(zones, key=lambda d: d['zone'])
+    pickup_zones = read.read_pickup()
+    dropoff_zones = read.read_dropoff()
+    pickup_zones = sorted(pickup_zones, key=lambda d: d['zone'])
+    dropoff_zones = sorted(dropoff_zones, key=lambda d: d['zone'])
 
     if request.method == "GET":
-        return render_template("index.html", zones=zones)
+        return render_template("index.html", pickup_zones=pickup_zones,dropoff_zones=dropoff_zones)
 
     if request.method == "POST":
 
@@ -47,14 +44,14 @@ def index():
         fare, duration = model_predict(model_request)
 
         context = {
-            "fate":fare,
+            "fare":fare,
             "duration":duration,
             "origin": origin,
             "destination": dest
         }
 
-        flash(context)
+        #flash(context)
 
-    return render_template("index.html",context=context, zones=zones, inputs=model_request)
+    return render_template("index.html",context=context, pickup_zones=pickup_zones,dropoff_zones=dropoff_zones, inputs=model_request)
 
 

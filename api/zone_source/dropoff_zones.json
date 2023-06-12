@@ -6,28 +6,16 @@
     "service_zone": "EWR"
   },
   {
-    "LocationID": 2,
-    "Borough": "Queens",
-    "Zone": "Jamaica Bay",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 3,
     "Borough": "Bronx",
     "Zone": "Allerton/Pelham Gardens",
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 4,
+    "LocationID": 4 ,
     "Borough": "Manhattan",
     "Zone": "Alphabet City",
     "service_zone": "Yellow Zone"
-  },
-  {
-    "LocationID": 5,
-    "Borough": "Staten Island",
-    "Zone": "Arden Heights",
-    "service_zone": "Boro Zone"
   },
   {
     "LocationID": 6,
@@ -42,27 +30,9 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 8,
-    "Borough": "Queens",
-    "Zone": "Astoria Park",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 9,
-    "Borough": "Queens",
-    "Zone": "Auburndale",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 10,
     "Borough": "Queens",
     "Zone": "Baisley Park",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 11,
-    "Borough": "Brooklyn",
-    "Zone": "Bath Beach",
     "service_zone": "Boro Zone"
   },
   {
@@ -105,18 +75,6 @@
     "LocationID": 18,
     "Borough": "Bronx",
     "Zone": "Bedford Park",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 19,
-    "Borough": "Queens",
-    "Zone": "Bellerose",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 20,
-    "Borough": "Bronx",
-    "Zone": "Belmont",
     "service_zone": "Boro Zone"
   },
   {
@@ -174,27 +132,9 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 30,
-    "Borough": "Queens",
-    "Zone": "Broad Channel",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 31,
     "Borough": "Bronx",
     "Zone": "Bronx Park",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 32,
-    "Borough": "Bronx",
-    "Zone": "Bronxdale",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 33,
-    "Borough": "Brooklyn",
-    "Zone": "Brooklyn Heights",
     "service_zone": "Boro Zone"
   },
   {
@@ -219,12 +159,6 @@
     "LocationID": 37,
     "Borough": "Brooklyn",
     "Zone": "Bushwick South",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 38,
-    "Borough": "Queens",
-    "Zone": "Cambria Heights",
     "service_zone": "Boro Zone"
   },
   {
@@ -270,12 +204,6 @@
     "service_zone": "Yellow Zone"
   },
   {
-    "LocationID": 46,
-    "Borough": "Bronx",
-    "Zone": "City Island",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 47,
     "Borough": "Bronx",
     "Zone": "Claremont/Bathgate",
@@ -300,21 +228,9 @@
     "service_zone": "Yellow Zone"
   },
   {
-    "LocationID": 51,
-    "Borough": "Bronx",
-    "Zone": "Co-Op City",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 52,
     "Borough": "Brooklyn",
     "Zone": "Cobble Hill",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 53,
-    "Borough": "Queens",
-    "Zone": "College Point",
     "service_zone": "Boro Zone"
   },
   {
@@ -336,39 +252,9 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 57,
-    "Borough": "Queens",
-    "Zone": "Corona",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 58,
-    "Borough": "Bronx",
-    "Zone": "Country Club",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 59,
-    "Borough": "Bronx",
-    "Zone": "Crotona Park",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 60,
-    "Borough": "Bronx",
-    "Zone": "Crotona Park East",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 61,
     "Borough": "Brooklyn",
     "Zone": "Crown Heights North",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 62,
-    "Borough": "Brooklyn",
-    "Zone": "Crown Heights South",
     "service_zone": "Boro Zone"
   },
   {
@@ -438,12 +324,6 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 74,
-    "Borough": "Manhattan",
-    "Zone": "East Harlem North",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 75,
     "Borough": "Manhattan",
     "Zone": "East Harlem South",
@@ -459,12 +339,6 @@
     "LocationID": 77,
     "Borough": "Brooklyn",
     "Zone": "East New York/Pennsylvania Avenue",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 78,
-    "Borough": "Bronx",
-    "Zone": "East Tremont",
     "service_zone": "Boro Zone"
   },
   {
@@ -495,18 +369,6 @@
     "LocationID": 83,
     "Borough": "Queens",
     "Zone": "Elmhurst/Maspeth",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 84,
-    "Borough": "Staten Island",
-    "Zone": "Eltingville/Annadale/Prince's Bay",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 85,
-    "Borough": "Brooklyn",
-    "Zone": "Erasmus",
     "service_zone": "Boro Zone"
   },
   {
@@ -570,27 +432,9 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 96,
-    "Borough": "Queens",
-    "Zone": "Forest Park/Highland Park",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 97,
     "Borough": "Brooklyn",
     "Zone": "Fort Greene",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 98,
-    "Borough": "Queens",
-    "Zone": "Fresh Meadows",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 99,
-    "Borough": "Staten Island",
-    "Zone": "Freshkills Park",
     "service_zone": "Boro Zone"
   },
   {
@@ -600,34 +444,10 @@
     "service_zone": "Yellow Zone"
   },
   {
-    "LocationID": 101,
-    "Borough": "Queens",
-    "Zone": "Glen Oaks",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 102,
     "Borough": "Queens",
     "Zone": "Glendale",
     "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 103,
-    "Borough": "Manhattan",
-    "Zone": "Governor's Island/Ellis Island/Liberty Island",
-    "service_zone": "Yellow Zone"
-  },
-  {
-    "LocationID": 104,
-    "Borough": "Manhattan",
-    "Zone": "Governor's Island/Ellis Island/Liberty Island",
-    "service_zone": "Yellow Zone"
-  },
-  {
-    "LocationID": 105,
-    "Borough": "Manhattan",
-    "Zone": "Governor's Island/Ellis Island/Liberty Island",
-    "service_zone": "Yellow Zone"
   },
   {
     "LocationID": 106,
@@ -645,24 +465,6 @@
     "LocationID": 108,
     "Borough": "Brooklyn",
     "Zone": "Gravesend",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 109,
-    "Borough": "Staten Island",
-    "Zone": "Great Kills",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 110,
-    "Borough": "Staten Island",
-    "Zone": "Great Kills Park",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 111,
-    "Borough": "Brooklyn",
-    "Zone": "Green-Wood Cemetery",
     "service_zone": "Boro Zone"
   },
   {
@@ -684,39 +486,9 @@
     "service_zone": "Yellow Zone"
   },
   {
-    "LocationID": 115,
-    "Borough": "Staten Island",
-    "Zone": "Grymes Hill/Clifton",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 116,
     "Borough": "Manhattan",
     "Zone": "Hamilton Heights",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 117,
-    "Borough": "Queens",
-    "Zone": "Hammels/Arverne",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 118,
-    "Borough": "Staten Island",
-    "Zone": "Heartland Village/Todt Hill",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 119,
-    "Borough": "Bronx",
-    "Zone": "Highbridge",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 120,
-    "Borough": "Manhattan",
-    "Zone": "Highbridge Park",
     "service_zone": "Boro Zone"
   },
   {
@@ -750,21 +522,9 @@
     "service_zone": "Yellow Zone"
   },
   {
-    "LocationID": 126,
-    "Borough": "Bronx",
-    "Zone": "Hunts Point",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 127,
     "Borough": "Manhattan",
     "Zone": "Inwood",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 128,
-    "Borough": "Manhattan",
-    "Zone": "Inwood Hill Park",
     "service_zone": "Boro Zone"
   },
   {
@@ -790,12 +550,6 @@
     "Borough": "Queens",
     "Zone": "JFK Airport",
     "service_zone": "Airports"
-  },
-  {
-    "LocationID": 133,
-    "Borough": "Brooklyn",
-    "Zone": "Kensington",
-    "service_zone": "Boro Zone"
   },
   {
     "LocationID": 134,
@@ -875,29 +629,12 @@
     "Zone": "Long Island City/Queens Plaza",
     "service_zone": "Boro Zone"
   },
-  {
-    "LocationID": 147,
-    "Borough": "Bronx",
-    "Zone": "Longwood",
-    "service_zone": "Boro Zone"
-  },
+
   {
     "LocationID": 148,
     "Borough": "Manhattan",
     "Zone": "Lower East Side",
     "service_zone": "Yellow Zone"
-  },
-  {
-    "LocationID": 149,
-    "Borough": "Brooklyn",
-    "Zone": "Madison",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 150,
-    "Borough": "Brooklyn",
-    "Zone": "Manhattan Beach",
-    "service_zone": "Boro Zone"
   },
   {
     "LocationID": 151,
@@ -912,27 +649,9 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 153,
-    "Borough": "Manhattan",
-    "Zone": "Marble Hill",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 154,
-    "Borough": "Brooklyn",
-    "Zone": "Marine Park/Floyd Bennett Field",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 155,
     "Borough": "Brooklyn",
     "Zone": "Marine Park/Mill Basin",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 156,
-    "Borough": "Staten Island",
-    "Zone": "Mariners Harbor",
     "service_zone": "Boro Zone"
   },
   {
@@ -951,12 +670,6 @@
     "LocationID": 159,
     "Borough": "Bronx",
     "Zone": "Melrose South",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 160,
-    "Borough": "Queens",
-    "Zone": "Middle Village",
     "service_zone": "Boro Zone"
   },
   {
@@ -1002,15 +715,9 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 168,
+    "LocationID": 168 ,
     "Borough": "Bronx",
     "Zone": "Mott Haven/Port Morris",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 169,
-    "Borough": "Bronx",
-    "Zone": "Mount Hope",
     "service_zone": "Boro Zone"
   },
   {
@@ -1020,39 +727,9 @@
     "service_zone": "Yellow Zone"
   },
   {
-    "LocationID": 171,
-    "Borough": "Queens",
-    "Zone": "Murray Hill-Queens",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 172,
-    "Borough": "Staten Island",
-    "Zone": "New Dorp/Midland Beach",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 173,
     "Borough": "Queens",
     "Zone": "North Corona",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 174,
-    "Borough": "Bronx",
-    "Zone": "Norwood",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 175,
-    "Borough": "Queens",
-    "Zone": "Oakland Gardens",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 176,
-    "Borough": "Staten Island",
-    "Zone": "Oakwood",
     "service_zone": "Boro Zone"
   },
   {
@@ -1092,34 +769,10 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 183,
-    "Borough": "Bronx",
-    "Zone": "Pelham Bay",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 184,
-    "Borough": "Bronx",
-    "Zone": "Pelham Bay Park",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 185,
-    "Borough": "Bronx",
-    "Zone": "Pelham Parkway",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 186,
     "Borough": "Manhattan",
     "Zone": "Penn Station/Madison Sq West",
     "service_zone": "Yellow Zone"
-  },
-  {
-    "LocationID": 187,
-    "Borough": "Staten Island",
-    "Zone": "Port Richmond",
-    "service_zone": "Boro Zone"
   },
   {
     "LocationID": 188,
@@ -1158,12 +811,6 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 194,
-    "Borough": "Manhattan",
-    "Zone": "Randalls Island",
-    "service_zone": "Yellow Zone"
-  },
-  {
     "LocationID": 195,
     "Borough": "Brooklyn",
     "Zone": "Red Hook",
@@ -1185,12 +832,6 @@
     "LocationID": 198,
     "Borough": "Queens",
     "Zone": "Ridgewood",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 199,
-    "Borough": "Bronx",
-    "Zone": "Rikers Island",
     "service_zone": "Boro Zone"
   },
   {
@@ -1218,12 +859,6 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 204,
-    "Borough": "Staten Island",
-    "Zone": "Rossville/Woodrow",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 205,
     "Borough": "Queens",
     "Zone": "Saint Albans",
@@ -1233,18 +868,6 @@
     "LocationID": 206,
     "Borough": "Staten Island",
     "Zone": "Saint George/New Brighton",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 207,
-    "Borough": "Queens",
-    "Zone": "Saint Michaels Cemetery/Woodside",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 208,
-    "Borough": "Bronx",
-    "Zone": "Schuylerville/Edgewater Park",
     "service_zone": "Boro Zone"
   },
   {
@@ -1278,18 +901,6 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 214,
-    "Borough": "Staten Island",
-    "Zone": "South Beach/Dongan Hills",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 215,
-    "Borough": "Queens",
-    "Zone": "South Jamaica",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 216,
     "Borough": "Queens",
     "Zone": "South Ozone Park",
@@ -1320,18 +931,6 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 221,
-    "Borough": "Staten Island",
-    "Zone": "Stapleton",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 222,
-    "Borough": "Brooklyn",
-    "Zone": "Starrett City",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 223,
     "Borough": "Queens",
     "Zone": "Steinway",
@@ -1347,12 +946,6 @@
     "LocationID": 225,
     "Borough": "Brooklyn",
     "Zone": "Stuyvesant Heights",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 226,
-    "Borough": "Queens",
-    "Zone": "Sunnyside",
     "service_zone": "Boro Zone"
   },
   {
@@ -1434,12 +1027,6 @@
     "service_zone": "Yellow Zone"
   },
   {
-    "LocationID": 240,
-    "Borough": "Bronx",
-    "Zone": "Van Cortlandt Park",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 241,
     "Borough": "Bronx",
     "Zone": "Van Cortlandt Village",
@@ -1464,12 +1051,6 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 245,
-    "Borough": "Staten Island",
-    "Zone": "West Brighton",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 246,
     "Borough": "Manhattan",
     "Zone": "West Chelsea/Hudson Yards",
@@ -1482,40 +1063,10 @@
     "service_zone": "Boro Zone"
   },
   {
-    "LocationID": 248,
-    "Borough": "Bronx",
-    "Zone": "West Farms/Bronx River",
-    "service_zone": "Boro Zone"
-  },
-  {
     "LocationID": 249,
     "Borough": "Manhattan",
     "Zone": "West Village",
     "service_zone": "Yellow Zone"
-  },
-  {
-    "LocationID": 250,
-    "Borough": "Bronx",
-    "Zone": "Westchester Village/Unionport",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 251,
-    "Borough": "Staten Island",
-    "Zone": "Westerleigh",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 252,
-    "Borough": "Queens",
-    "Zone": "Whitestone",
-    "service_zone": "Boro Zone"
-  },
-  {
-    "LocationID": 253,
-    "Borough": "Queens",
-    "Zone": "Willets Point",
-    "service_zone": "Boro Zone"
   },
   {
     "LocationID": 254,
