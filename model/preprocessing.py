@@ -84,10 +84,4 @@ def preprocessing():
     filtered_df = filtered_df[filtered_df["DOZone"] != "Springfield Gardens North"]
     filtered_df = filtered_df[filtered_df["DOZone"] != "Columbia Street"]
 
-    encoder = LabelEncoder() 
-    filtered_df["PUZone"] = encoder.fit_transform(filtered_df[["PUZone"]])
-
-    encoder = LabelEncoder() 
-    filtered_df["DOZone"] = encoder.fit_transform(filtered_df[["DOZone"]])
-
     return filtered_df
