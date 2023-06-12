@@ -50,8 +50,6 @@ def index():
             "destination": dest
         }
 
-        #flash(context)
-
-    return render_template("index.html",context=context, pickup_zones=pickup_zones,dropoff_zones=dropoff_zones, inputs=model_request)
+        return context
 
 
