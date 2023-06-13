@@ -10,7 +10,7 @@ import requests
 
 
 
-api_key = "AIzaSyCP-1qFF-vI7fGe0H7QiJDCgZuGehYfcBE"
+api_key = "google maps api key"
 
 start_point = None
 dest_point = None
@@ -68,7 +68,7 @@ def predict(data,start_point,dest_point,hour_input):
     }
     headers = {
         "content-type": "application/json",
-        "x-api-key": "bgdb834m3N9jTNhQNhLrjgqRLPgLJJGg"
+        "x-api-key": "toll guru api key"
     }
 
     response = requests.request("POST", url, json=payload, headers=headers)
