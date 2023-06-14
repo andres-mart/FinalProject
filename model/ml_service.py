@@ -25,8 +25,8 @@ def get_prediction():
         queue, msg = db.brpop(settings.REDIS_QUEUE)
         json_obj = json.loads(msg.decode())
 
-        start_point = int(json_obj["start_point"])
-        dest_point = int(json_obj["dest_point"])
+        start_point = json_obj["start_point"]
+        dest_point = json_obj["dest_point"]
         time_input = json_obj["time"]
         hour_input = int(time_input.split(":")[0])
 

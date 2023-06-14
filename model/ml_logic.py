@@ -1,6 +1,7 @@
 import pandas as pd
 import geopy.distance
 import numpy as np
+import settings
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
@@ -8,9 +9,7 @@ from xgboost import XGBRegressor
 import googlemaps
 import requests
 
-
-
-api_key = "google maps api key"
+api_key = settings.GOOGLE_API_KEY
 
 start_point = None
 dest_point = None
@@ -68,7 +67,7 @@ def predict(data,start_point,dest_point,hour_input):
     }
     headers = {
         "content-type": "application/json",
-        "x-api-key": "toll guru api key"
+        "x-api-key": "bgdb834m3N9jTNhQNhLrjgqRLPgLJJGg"
     }
 
     response = requests.request("POST", url, json=payload, headers=headers)
